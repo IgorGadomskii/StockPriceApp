@@ -6,6 +6,8 @@ struct Stock: Codable {
     var price: Int!
     var exchange: Int!
     
+   
+    
     init(stocksData: [String : Any]) {
         symbol = stocksData["symbol"] as? String
         name = stocksData["name"] as? String
@@ -18,7 +20,11 @@ struct Stock: Codable {
         return stockData.compactMap { Stock(stocksData: $0)}
         
     }
-    
-    
-    
 }
+
+struct Section {
+    var title: String!
+    var stocks: [Stock]
+}
+
+

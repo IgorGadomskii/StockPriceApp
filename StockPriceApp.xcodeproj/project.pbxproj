@@ -17,6 +17,7 @@
 		FAB61B8F27F7687F009DEB21 /* StockListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB61B8E27F7687F009DEB21 /* StockListTableViewController.swift */; };
 		FAB61B9527F769BA009DEB21 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB61B9427F769BA009DEB21 /* Stock.swift */; };
 		FAB61B9827F76ADA009DEB21 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB61B9727F76ADA009DEB21 /* NetworkManager.swift */; };
+		FAD7232027FCBA4C00EE75BC /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD7231F27FCBA4C00EE75BC /* Data.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		FAB61B8E27F7687F009DEB21 /* StockListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListTableViewController.swift; sourceTree = "<group>"; };
 		FAB61B9427F769BA009DEB21 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		FAB61B9727F76ADA009DEB21 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		FAD7231F27FCBA4C00EE75BC /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +64,6 @@
 				3C13518D9534A782C75738E2 /* Pods-StockPriceApp.debug.xcconfig */,
 				E3CA378334CF0D0D0CE8FE8A /* Pods-StockPriceApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -89,6 +90,7 @@
 			children = (
 				FAB61B9127F76917009DEB21 /* ViewControlers */,
 				FAB61B9227F7692E009DEB21 /* Model */,
+				FAD7231E27FCBA3500EE75BC /* Data */,
 				FAB61B9627F76AC7009DEB21 /* Services */,
 				FAB61B9027F768FB009DEB21 /* Storybords */,
 				FAB61B9927F76AEB009DEB21 /* Resorces */,
@@ -147,6 +149,14 @@
 				FAB61B8127F764F7009DEB21 /* Assets.xcassets */,
 			);
 			path = Resorces;
+			sourceTree = "<group>";
+		};
+		FAD7231E27FCBA3500EE75BC /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				FAD7231F27FCBA4C00EE75BC /* Data.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAD7232027FCBA4C00EE75BC /* Data.swift in Sources */,
 				FAB61B9827F76ADA009DEB21 /* NetworkManager.swift in Sources */,
 				FAB61B8F27F7687F009DEB21 /* StockListTableViewController.swift in Sources */,
 				FAB61B7927F764F6009DEB21 /* AppDelegate.swift in Sources */,

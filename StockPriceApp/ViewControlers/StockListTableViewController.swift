@@ -1,70 +1,76 @@
-//
-//  StockListTableViewController.swift
-//  StockPriceApp
-//
-//  Created by Macbook on 01.04.2022.
-//
+
 
 import UIKit
 
 class StockListTableViewController: UITableViewController {
     
-   var stocks: [Stock] = []
+    var stocks: [Stock] = []
+    var sections: [Section] = []
     
+    var alphabet: [String] {
+        let data = Data()
+        let letters = data.alphabet
+        return letters
+    }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         getStocksInfo()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        addSections()
     }
 
     // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        sections.count
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        stocks.count
+        sections[section].stocks.count
     }
     
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        sections[section].title
+    }
+    
+   
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "stockInfo", for: indexPath)
+        var content = cell.defaultContentConfiguration()
+        
+        content.text = sections[indexPath.section].stocks[indexPath.row].symbol
+        
+        cell.contentConfiguration = content
+        
+        return cell
+    }
+    
+    private func addSections() {
+        
+        for letter in alphabet {
+            var sections = Section(title: letter, stocks: [])
+            for stock in stocks {
+                if stock.name.starts(with: letter) {
+                    sections.stocks.append(stock)
+                }
+            }
+        }
+    }
     
     private func getStocksInfo() {
-        
         NetworkManager.shared.fetchData(NetworkManager.shared.stockUrl) {result in
             switch result{
             case .success(let stocks):
-                self.stocks = stocks
+                self.stocks = stocks.sorted(by: {$0.symbol < $1.symbol})
                 self.tableView.reloadData()
             case .failure(let error):
                 print(error)
             }
         }
     }
-
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "stockInfo", for: indexPath)
-
-        var content = cell.defaultContentConfiguration()
-        
-        let arrangedStocks  = stocks.sorted(by: {$0.name < $1.name})
-        
-        let stock = arrangedStocks[indexPath.row]
-        content.text = stock.name
-        cell.contentConfiguration = content
-
-        return cell
-    }
-    
 
     /*
     // Override to support conditional editing of the table view.
